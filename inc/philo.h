@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 14:43:55 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:16:54 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ typedef struct s_data
 {
 	int				num_philos;
 	int				num_meals;
-	int				num_full;
 	int				loop;
-	u_int64_t		start_time;
-	u_int64_t		eating_time;
-	u_int64_t		sleep_time;
+	int				time_start;
+	int				time_eat;
+	int				time_sleep;
+	int				time_die;
 	pthread_mutex_t	mut_eat;
 	pthread_mutex_t	mut_sleep;
 	pthread_mutex_t	mut_print;
@@ -53,5 +53,8 @@ typedef struct s_data
 
 /*INITIALIZATION*/
 void	init_data(t_data *data, char **av);
+
+/*UTILS*/
+int		ft_atoi(char *str);
 
 #endif
