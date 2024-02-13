@@ -74,3 +74,13 @@ philosophers, each philosopher has a fork on their left side and a fork on their
 side. If there is only one philosopher, there should be only one fork on the table.
 • To prevent philosophers from duplicating forks, you should protect the forks state
 with a mutex for each of them.
+
+Resources:
+https://www.youtube.com/watch?v=UGQsvVKwe90
+https://www.youtube.com/watch?v=d9s_d28yJq0
+
+even:
+time_to_die = time_to_eat + time_to_sleep + 10
+./philo 2 410 200 200 5
+odd:
+time_to_die = (time_to_eat *2) + time_to_sleep + 10;

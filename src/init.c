@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 13:30:46 by ksansom          ###   ########.fr       */
+/*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
+/*   Updated: 2024/02/13 13:32:25 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int ac, char **av)
+void	init_data(t_data *data, char **av)
 {
-	t_data	data;
+	int	i;
 
-	if (ac < 5 && ac > 6)
-	{
-		write(STDERR_FILENO, "Incomplete args. Usage:\n\
-			num_philos time_to_die time_to_eat time_to_sleep", 73);
-		return (1);
-	}
-	init_data(&data, av);
+	i = -1;
+	memset(data, 0, sizeof(t_data));
+	while (av[++i])
+		printf("%s\n", av[i]);
+	//data->start_time = gettimeofday();
 }

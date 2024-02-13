@@ -6,7 +6,7 @@
 #    By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:54:49 by ksansom           #+#    #+#              #
-#    Updated: 2024/02/13 10:58:49 by ksansom          ###   ########.fr        #
+#    Updated: 2024/02/13 13:50:07 by ksansom          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 # Source dir and files
 SRC_DIR = src
 SRCS =	src/main.c \
+		src/init.c
 
 # Object files
 OBJ_DIR = obj

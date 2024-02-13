@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 11:15:47 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/13 13:35:24 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,33 @@
 # include <sys/stat.h>
 # include <semaphore.h>
 
+typedef enum e_state
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	DEAD,
+	FULL,
+	IDLE
+}	t_state;
 
+typedef struct s_data
+{
+	int				num_philos;
+	int				num_meals;
+	int				num_full;
+	bool			loop;
+	u_int64_t		start_time;
+	u_int64_t		eating_time;
+	u_int64_t		sleep_time;
+	pthread_mutex_t	mut_eat;
+	pthread_mutex_t	mut_sleep;
+	pthread_mutex_t	mut_print;
+	pthread_mutex_t	mut_num_philos;
+	pthre
+}	t_data;
 
-
+/*INITIALIZATION*/
+void	init_data(t_data *data, char **av);
 
 #endif
