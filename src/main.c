@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 13:30:46 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:54:06 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac < 5 && ac > 6)
+	if (ac <= 4 || ac >= 7)
 	{
-		write(STDERR_FILENO, "Incomplete args. Usage:\n\
-			num_philos time_to_die time_to_eat time_to_sleep", 73);
+		write(1, "Incomplete args! Usage:\n", 24);
+		write(1, "num_philos time_die time_eat time_sleep\n", 40);
 		return (1);
 	}
 	init_data(&data, av);

@@ -6,7 +6,7 @@
 #    By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:54:49 by ksansom           #+#    #+#              #
-#    Updated: 2024/02/13 13:50:07 by ksansom          ###   ########.fr        #
+#    Updated: 2024/02/13 14:39:46 by ksansom          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ SRCS =	src/main.c \
 # Object files
 OBJ_DIR = obj
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
 
 # Default target (all)
 all: $(NAME)
@@ -37,6 +35,8 @@ $(NAME): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 # Clean object files and executable
 clean:
 	rm -rf $(OBJ_DIR)

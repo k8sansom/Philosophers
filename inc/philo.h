@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 13:35:24 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:43:55 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_data
 	int				num_philos;
 	int				num_meals;
 	int				num_full;
-	bool			loop;
+	int				loop;
 	u_int64_t		start_time;
 	u_int64_t		eating_time;
 	u_int64_t		sleep_time;
@@ -49,7 +49,6 @@ typedef struct s_data
 	pthread_mutex_t	mut_sleep;
 	pthread_mutex_t	mut_print;
 	pthread_mutex_t	mut_num_philos;
-	pthre
 }	t_data;
 
 /*INITIALIZATION*/
