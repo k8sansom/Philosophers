@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 15:54:06 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:55:14 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	init_data(&data, av);
+	return (0);
 }
