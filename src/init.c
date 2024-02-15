@@ -12,6 +12,11 @@
 
 #include "../inc/philo.h"
 
+int	ft_malloc_init_data(t_data *data)
+{
+
+}
+
 int	init_data(t_data *data, char **av)
 {
 	memset(data, 0, sizeof(t_data));
@@ -29,6 +34,13 @@ int	init_data(t_data *data, char **av)
 		return (1);
 	if (data->time_eat < 60 || data->time_die < 60 || data->time_sleep < 60)
 		return (1);
+	pthread_mutex_init(&data->mut_eat NULL);
+	pthread_mutex_init(&data->mut_sleep, NULL);
+	pthread_mutex_init(&data->mut_die, NULL);
+	pthread_mutex_init(&data->mut_print, NULL);
+	pthread_mutex_init(&data->mut_num_philos, NULL);
+	//pthread_mutex_init(&data->mut_keep_iter, NULL);
+	pthread_mutex_init(&data->mut_start, NULL);
 	//data->start_time = gettimeofday();
-	return (0);
+	return (ft_malloc_init_data(data));
 }

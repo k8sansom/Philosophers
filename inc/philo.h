@@ -47,8 +47,10 @@ typedef struct s_data
 	int				time_die;
 	pthread_mutex_t	mut_eat;
 	pthread_mutex_t	mut_sleep;
+	pthread_mutex_t	mut_die;
 	pthread_mutex_t	mut_print;
 	pthread_mutex_t	mut_num_philos;
+	pthread_mutex_t	mut_start;
 }	t_data;
 
 /*INITIALIZATION*/
