@@ -14,17 +14,17 @@
 
 void	ft_print_usage(void)
 {
-	write(1, "IMPROPER USAGE:\n", 16);
+	write(1, "\nIMPROPER USAGE:\n", 17);
 	write(1, "./philo #philosophers time_to_die ", 34);
 	write(1, "time_to_eat time_to_sleep ", 26);
-	write(1, "(optional)#times_each_philosopher_must_eat\n", 43);
+	write(1, "(optional)#meals\n\n", 18);
 	write(1, "Example:\n", 9);
-	write(1, "./philo 4 800 200 200 5\n", 24);
+	write(1, "./philo 4 800 200 200 5\n\n", 25);
 	write(1, "#philosophers: 1-200\n", 21);
 	write(1, "time_to_die: 60+\n", 17);
 	write(1, "time_to_eat: 60+\n", 17);
 	write(1, "time_to_sleep: 60+\n", 19);
-	write(1, "#times_each_philosopher_must_eat: 1+\n", 37);
+	write(1, "#meals: 1+\n\n", 12);
 }
 
 int	ft_atoi(char *str)
