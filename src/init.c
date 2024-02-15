@@ -12,17 +12,23 @@
 
 #include "../inc/philo.h"
 
-void	init_data(t_data *data, char **av)
+int	init_data(t_data *data, char **av)
 {
-	int	i;
-
-	i = -1;
 	memset(data, 0, sizeof(t_data));
 	data->num_philos = ft_atoi(av[1]);
 	data->time_die = ft_atoi(av[2]);
 	data->time_eat = ft_atoi(av[3]);
 	data->time_sleep = ft_atoi(av[4]);
 	if (av[5])
+	{
 		data->num_meals = ft_atoi(av[5]);
+		if (data->num_meals <= 0)
+			return (1);
+	}
+	if (data->num_philos < 1 || data->num_philos > 200)
+		return (1);
+	if (data->time_eat < 60 || data->time_die < 60 || data->time_sleep < 60)
+		return (1);
 	//data->start_time = gettimeofday();
+	return (0);
 }

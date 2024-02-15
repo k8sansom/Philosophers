@@ -18,10 +18,13 @@ int	main(int ac, char **av)
 
 	if (ac <= 4 || ac >= 7)
 	{
-		write(1, "Incomplete args! Usage:\n", 24);
-		write(1, "num_philos time_die time_eat time_sleep\n", 40);
+		ft_print_usage();
 		return (1);
 	}
-	init_data(&data, av);
+	if (init_data(&data, av) != 0)
+	{
+		ft_print_usage();
+		return (1);
+	}
 	return (0);
 }

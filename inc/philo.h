@@ -52,9 +52,10 @@ typedef struct s_data
 }	t_data;
 
 /*INITIALIZATION*/
-void	init_data(t_data *data, char **av);
+int		init_data(t_data *data, char **av);
 
 /*UTILS*/
 int		ft_atoi(char *str);
+void	ft_print_usage(void);
 
 #endif
