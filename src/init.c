@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 11:46:12 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:49:06 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	init_data(t_data *data, char **av)
 		return (1);
 	if (data->time_eat < 60 || data->time_die < 60 || data->time_sleep < 60)
 		return (1);
+	data->loop = 1;
 	pthread_mutex_init(&data->mut_eat, NULL);
 	pthread_mutex_init(&data->mut_sleep, NULL);
 	pthread_mutex_init(&data->mut_die, NULL);
