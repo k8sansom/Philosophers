@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 11:47:53 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:27:57 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,32 @@ typedef struct s_data
 	pthread_mutex_t	mut_print;
 	pthread_mutex_t	mut_num_philos;
 	pthread_mutex_t	mut_start;
+	pthread_mutex_t	mut_loop;
+	pthread_t		check_all_alive;
+	pthread_t		check_all_full;
 	t_philosopher	*philosophers;
 	pthread_mutex_t	*forks;
 	pthread_t		*philo_threads;
 }	t_data;
 
 /*INITIALIZATION*/
-int		init_data(t_data *data, char **av);
-int		init_malloc_data(t_data *data);
-int		init_philosophers(t_data *data);
+int				init_data(t_data *data, char **av);
+int				init_malloc_data(t_data *data);
+int				init_philosophers(t_data *data);
 
 /*UTILS*/
-int		ft_atoi(char *str);
-int		ft_print_usage(void);
-int		ft_error(t_data *data, char *str, int err_code);
-int		ft_strlen(char *str);
+int				ft_atoi(char *str);
+int				ft_print_usage(void);
+int				ft_exit(t_data *data, char *str, int ret_code);
+int				ft_strlen(char *str);
+void			free_phil_data(t_data *data);
 
 /*UTILS_TIME*/
 unsigned long	ft_get_time(void);
-void	ft_update_meal_time(t_philosopher *philo);
+void			ft_update_meal_time(t_philosopher *philo);
+
+/*UTILS_GET*/
+int				get_num_philos(t_data *data);
 
 /*EATING*/
 
