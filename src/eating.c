@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   eating.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 11:19:39 by ksansom          ###   ########.fr       */
+/*   Created: 2024/02/16 10:22:38 by ksansom           #+#    #+#             */
+/*   Updated: 2024/02/16 10:25:07 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int ac, char **av)
+void	ft_update_meal_time(t_philosopher *philo)
 {
-	t_data	data;
-
-	memset(&data, 0, sizeof(t_data));
-	if (ac <= 4 || ac >= 7)
-		return (ft_print_usage());
-	if (init_data(&data, av) != 0)
-		return (ft_print_usage());
-	/*if (init_malloc_data(&data) != 0)
-		return (ft_error(&data, "Malloc error", 2));
-	if (init_philosophers(&data) != 0)
-		return (ft_error(&data, "Error initializing philosophers", 3));*/
-	return (0);
+	pthread_mutex_lock(&philo->mut_last_meal_time);
+	philo->last_meal_time = ft_get_time();
+	pthread_mutex_unlock(&philo->mut_last_meal_time);
 }

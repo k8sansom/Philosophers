@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 11:19:39 by ksansom          ###   ########.fr       */
+/*   Created: 2024/02/16 10:25:49 by ksansom           #+#    #+#             */
+/*   Updated: 2024/02/16 10:42:42 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int ac, char **av)
+unsigned long	ft_get_time(void)
 {
-	t_data	data;
+	struct timeval	time;
 
-	memset(&data, 0, sizeof(t_data));
-	if (ac <= 4 || ac >= 7)
-		return (ft_print_usage());
-	if (init_data(&data, av) != 0)
-		return (ft_print_usage());
-	/*if (init_malloc_data(&data) != 0)
-		return (ft_error(&data, "Malloc error", 2));
-	if (init_philosophers(&data) != 0)
-		return (ft_error(&data, "Error initializing philosophers", 3));*/
-	return (0);
+	if (gettimeofday(&time, NULL))
+		return (0);
+	return ((unsigned long)((time.tv_sec * 1000) + (time.tv_usec / 1000)));
 }

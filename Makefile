@@ -6,7 +6,7 @@
 #    By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:54:49 by ksansom           #+#    #+#              #
-#    Updated: 2024/02/13 16:08:09 by ksansom          ###   ########.fr        #
+#    Updated: 2024/02/16 10:42:02 by ksansom          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Source dir and files
 SRC_DIR = src
-SRCS =	src/main.c \
+SRCS =	src/eating.c \
 		src/init.c \
-		src/utils.c
+		src/main.c \
+		src/utils_time.c \
+		src/utils.c 
 
 # Object files
 OBJ_DIR = obj

@@ -6,13 +6,43 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:02:17 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/13 16:08:16 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 10:10:00 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	ft_print_usage(void)
+/*void	free_philosophers(t_data *data)
+{
+}*/
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_error(t_data *data, char *str, int err_code)
+{
+	if (data)
+	{
+		if (data->philosophers)
+			free(data->philosophers);
+		if (data->forks)
+			free(data->forks);
+		if (data->philo_threads)
+			free(data->philo_threads);
+	}
+	if (str)
+		write(1, str, ft_strlen(str));
+	return (err_code);
+}
+
+int	ft_print_usage(void)
 {
 	write(1, "\nIMPROPER USAGE:\n", 17);
 	write(1, "./philo #philosophers time_to_die ", 34);
@@ -25,6 +55,7 @@ void	ft_print_usage(void)
 	write(1, "time_to_eat: 60+\n", 17);
 	write(1, "time_to_sleep: 60+\n", 19);
 	write(1, "#meals: 1+\n\n", 12);
+	return (1);
 }
 
 int	ft_atoi(char *str)
