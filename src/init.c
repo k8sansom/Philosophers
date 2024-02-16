@@ -6,11 +6,33 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 11:30:24 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:46:12 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+static void	init_forks(t_data *data)
+{
+	t_philosopher	*philo;
+	int				i;
+
+	philo = data->philosophers;
+	i = 0;
+	while (i < data->num_philos)
+	{
+		pthread_mutex_init(&data->forks[i], NULL);
+		i++;
+	}
+	i = 0;
+	philo[0].left_fork = &data->forks[0];
+	philo[0].right_fork = &data->forks[data->num_philos - 1];
+	while (++i < data->num_philos)
+	{
+		philo[i].left_fork = &data->forks[i];
+		philo[i].right_fork = &data->forks[i];
+	}
+}
 
 int	init_philosophers(t_data *data)
 {
@@ -32,6 +54,7 @@ int	init_philosophers(t_data *data)
 			return (3);
 		i++;
 	}
+	init_forks(data);
 	return (0);
 }
 
