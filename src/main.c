@@ -6,13 +6,37 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 13:39:44 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:58:13 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-/*static void	ft_run_threads(t_data *data)
+/*void	*routine(void *philo_ptr)
+{
+	t_philosopher	*philo;
+
+	philo = (t_philosopher *)philo_ptr;
+	ft_update_meal_time(philo);
+	if (philo->id % 2 == 0)
+		ft_usleep(philo->data->time_eat - 10);
+	while (get_philo_state(philo) != DEAD)
+	{
+		if (eat(philo) != 0)
+			break ;
+		if (get_philo_state(philo) == DEAD)
+			break ;
+		if (ft_sleep(philo) != 0)
+			break ;
+		if (get_philo_state(philo) == DEAD)
+			break ;
+		if (think(philo) != 0)
+			break ;
+	}
+	return (NULL);
+}
+
+static void	ft_run_threads(t_data *data)
 {
 	int		i;
 	int		num_philos;

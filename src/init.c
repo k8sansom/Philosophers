@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 13:10:23 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:59:37 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	init_philosophers(t_data *data)
 	philo = data->philosophers;
 	while (i < data->num_philos)
 	{
+		philo[i].data = data;
 		philo[i].id = i + 1;
 		philo[i].meals_eaten = 0;
 		philo[i].state = IDLE;
@@ -85,6 +86,7 @@ int	init_data(t_data *data, char **av)
 	data->time_die = (unsigned long)ft_atoi(av[2]);
 	data->time_eat = (unsigned long)ft_atoi(av[3]);
 	data->time_sleep = (unsigned long)ft_atoi(av[4]);
+	data->num_meals = -1;
 	if (av[5])
 	{
 		data->num_meals = ft_atoi(av[5]);

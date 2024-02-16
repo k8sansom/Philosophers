@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 13:27:57 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:49:27 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philosopher
 {
 	int				id;
 	int				meals_eaten;
+	struct s_data	*data;
 	t_state			state;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
