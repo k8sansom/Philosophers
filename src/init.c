@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 11:20:58 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:30:24 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 int	init_philosophers(t_data *data)
 {
-	t_philosopher	*philos;
+	t_philosopher	*philo;
 	int				i;
 
 	i = 0;
-	philos = data->philosophers;
+	philo = data->philosophers;
 	while (i < data->num_philos)
 	{
-		//philos[i].data = data;
-		philos[i].id = i + 1;
-		philos[i].meals_eaten = 0;
-		philos[i].state = IDLE;
-		pthread_mutex_init(&philos[i].mut_state, NULL);
-		pthread_mutex_init(&philos[i].mut_meals_eaten, NULL);
-		pthread_mutex_init(&philos[i].mut_last_meal_time, NULL);
-		ft_update_meal_time(&philos[i]);
+		philo[i].id = i + 1;
+		philo[i].meals_eaten = 0;
+		philo[i].state = IDLE;
+		pthread_mutex_init(&philo[i].mut_state, NULL);
+		pthread_mutex_init(&philo[i].mut_meals_eaten, NULL);
+		pthread_mutex_init(&philo[i].mut_last_meal_time, NULL);
+		ft_update_meal_time(&philo[i]);
+		if (philo->last_meal_time == 0)
+			return (3);
+		i++;
 	}
 	return (0);
 }

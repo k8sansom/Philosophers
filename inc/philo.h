@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 10:43:24 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:26:11 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int		ft_strlen(char *str);
 
 /*UTILS_TIME*/
 unsigned long	ft_get_time(void);
+void	ft_update_meal_time(t_philosopher *philo);
 
 /*EATING*/
-void	ft_update_meal_time(t_philosopher *philo);
 
 
 #endif
