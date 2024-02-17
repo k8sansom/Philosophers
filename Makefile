@@ -21,6 +21,7 @@ SRCS =	src/eating.c \
 		src/init.c \
 		src/main.c \
 		src/utils_get.c \
+		src/utils_print.c \
 		src/utils_time.c \
 		src/utils.c 
 

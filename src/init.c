@@ -70,13 +70,13 @@ int	init_malloc_data(t_data *data)
 	data->philo_threads = malloc(sizeof(pthread_t) * data->num_philos);
 	if (data->philo_threads == NULL)
 		return (2);
-	pthread_mutex_init(&data->mut_eat, NULL);
-	pthread_mutex_init(&data->mut_sleep, NULL);
-	pthread_mutex_init(&data->mut_die, NULL);
+	pthread_mutex_init(&data->mut_time_eat, NULL);
+	pthread_mutex_init(&data->mut_time_sleep, NULL);
+	pthread_mutex_init(&data->mut_time_die, NULL);
 	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_num_philos, NULL);
-	pthread_mutex_init(&data->mut_loop, NULL);
-	pthread_mutex_init(&data->mut_start, NULL);
+	pthread_mutex_init(&data->mut_keep_loop, NULL);
+	pthread_mutex_init(&data->mut_time_start, NULL);
 	return (0);
 }
 
@@ -97,8 +97,9 @@ int	init_data(t_data *data, char **av)
 		return (1);
 	if (data->time_eat < 60 || data->time_die < 60 || data->time_sleep < 60)
 		return (1);
-	data->loop = 1;
-	data->time_start = ft_get_time();
-	printf("start time: %lu\n", data->time_start);
+	data->keep_loop = 1;
+	ft_check_validity(data);
+	/*data->time_start = ft_get_time();
+	printf("start time: %lu\n", data->time_start);*/
 	return (0);
 }

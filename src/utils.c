@@ -27,13 +27,13 @@ void	free_phil_data(t_data *data)
 		pthread_mutex_destroy(&data->philosophers[i].mut_last_meal_time);
 		i++;
 	}
-	pthread_mutex_destroy(&data->mut_die);
-	pthread_mutex_destroy(&data->mut_eat);
-	pthread_mutex_destroy(&data->mut_sleep);
+	pthread_mutex_destroy(&data->mut_time_die);
+	pthread_mutex_destroy(&data->mut_time_eat);
+	pthread_mutex_destroy(&data->mut_time_sleep);
 	pthread_mutex_destroy(&data->mut_num_philos);
 	pthread_mutex_destroy(&data->mut_print);
-	pthread_mutex_destroy(&data->mut_loop);
-	pthread_mutex_destroy(&data->mut_start);
+	pthread_mutex_destroy(&data->mut_keep_loop);
+	pthread_mutex_destroy(&data->mut_time_start);
 	free(data->philo_threads);
 	free(data->philosophers);
 	free(data->forks);
@@ -63,22 +63,6 @@ int	ft_exit(t_data *data, char *str, int ret_code)
 	if (str)
 		write(1, str, ft_strlen(str));
 	return (ret_code);
-}
-
-int	ft_print_usage(void)
-{
-	write(1, "\nIMPROPER USAGE:\n", 17);
-	write(1, "./philo #philosophers time_to_die ", 34);
-	write(1, "time_to_eat time_to_sleep ", 26);
-	write(1, "(optional)#meals\n\n", 18);
-	write(1, "Example:\n", 9);
-	write(1, "./philo 4 800 200 200 5\n\n", 25);
-	write(1, "#philosophers: 1-200\n", 21);
-	write(1, "time_to_die: 60+\n", 17);
-	write(1, "time_to_eat: 60+\n", 17);
-	write(1, "time_to_sleep: 60+\n", 19);
-	write(1, "#meals: 1+\n\n", 12);
-	return (1);
 }
 
 int	ft_atoi(char *str)

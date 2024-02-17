@@ -54,18 +54,18 @@ typedef struct s_data
 {
 	int				num_philos;
 	int				num_meals;
-	int				loop;
+	int				keep_loop;
 	unsigned long	time_start;
 	unsigned long	time_eat;
 	unsigned long	time_sleep;
 	unsigned long	time_die;
-	pthread_mutex_t	mut_eat;
-	pthread_mutex_t	mut_sleep;
-	pthread_mutex_t	mut_die;
+	pthread_mutex_t	mut_time_eat;
+	pthread_mutex_t	mut_time_sleep;
+	pthread_mutex_t	mut_time_die;
 	pthread_mutex_t	mut_print;
 	pthread_mutex_t	mut_num_philos;
-	pthread_mutex_t	mut_start;
-	pthread_mutex_t	mut_loop;
+	pthread_mutex_t	mut_time_start;
+	pthread_mutex_t	mut_keep_loop;
 	pthread_t		check_all_alive;
 	pthread_t		check_all_full;
 	t_philosopher	*philosophers;
@@ -80,7 +80,6 @@ int				init_philosophers(t_data *data);
 
 /*UTILS*/
 int				ft_atoi(char *str);
-int				ft_print_usage(void);
 int				ft_exit(t_data *data, char *str, int ret_code);
 int				ft_strlen(char *str);
 void			free_phil_data(t_data *data);
@@ -94,5 +93,8 @@ int				get_num_philos(t_data *data);
 
 /*EATING*/
 
+/*UTILS_PRINT*/
+int				ft_print_usage(void);
+void			ft_check_validity(t_data *data);
 
 #endif
