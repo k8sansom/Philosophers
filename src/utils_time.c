@@ -12,6 +12,15 @@
 
 #include "../inc/philo.h"
 
+void	ft_usleep(unsigned long time_sleep)
+{
+	unsigned long	start;
+
+	start = ft_get_time();
+	while ((ft_get_time() - start) < time_sleep)
+		usleep(500);
+}
+
 void	ft_update_meal_time(t_philosopher *philo)
 {
 	pthread_mutex_lock(&philo->mut_last_meal_time);

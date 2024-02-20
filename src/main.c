@@ -12,36 +12,32 @@
 
 #include "../inc/philo.h"
 
-/*void	*routine(void *philo_ptr)
+/*static void	ft_join_threads(t_data *data)
 {
-	t_philosopher	*philo;
+	int	i;
+	int	num_philos;
 
-	philo = (t_philosopher *)philo_ptr;
-	ft_update_meal_time(philo);
-	if (philo->id % 2 == 0)
-		ft_usleep(philo->data->time_eat - 10);
-	while (get_philo_state(philo) != DEAD)
+	num_philos = get_num_philos(data);
+	i = -1;
+	if (pthread_join(data->check_all_alive, NULL))
+		return ;
+	if (ft_num_meals(data) == 1
+		&& pthread_join(data->check_all_full, NULL))
+		return ;
+	while (++i < num_philos)
 	{
-		if (eat(philo) != 0)
-			break ;
-		if (get_philo_state(philo) == DEAD)
-			break ;
-		if (ft_sleep(philo) != 0)
-			break ;
-		if (get_philo_state(philo) == DEAD)
-			break ;
-		if (think(philo) != 0)
-			break ;
+		if (pthread_join(data->philo_threads[i], NULL))
+			return ;
 	}
-	return (NULL);
+	return ;
 }
-
 static void	ft_run_threads(t_data *data)
 {
 	int		i;
 	int		num_philos;
 
 	num_philos = get_num_philos(data);
+	data->time_start = ft_get_time();
 	i = -1;
 	while (++i < num_philos)
 	{
@@ -49,6 +45,14 @@ static void	ft_run_threads(t_data *data)
 			&data->philosophers[i]))
 			return ;
 	}
+	if (pthread_create(&data->check_all_alive, NULL,
+		&ft_alive_routine, data))
+		return ;
+	if (ft_num_meals(data) == 1
+		&& pthread_create(&data->check_all_full, NULL,
+		&ft_full_routine, data))
+		return ;
+	return ;
 }*/
 
 int	main(int ac, char **av)
