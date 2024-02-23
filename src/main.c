@@ -6,13 +6,13 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 13:58:13 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/23 15:14:28 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-/*static void	ft_join_threads(t_data *data)
+/*
+static void	ft_join_threads(t_data *data)
 {
 	int	i;
 	int	num_philos;
@@ -21,8 +21,7 @@
 	i = -1;
 	if (pthread_join(data->check_all_alive, NULL))
 		return ;
-	if (ft_num_meals(data) == 1
-		&& pthread_join(data->check_all_full, NULL))
+	if (data->num_meals > 0 && pthread_join(data->check_all_full, NULL))
 		return ;
 	while (++i < num_philos)
 	{
@@ -31,6 +30,7 @@
 	}
 	return ;
 }
+
 static void	ft_run_threads(t_data *data)
 {
 	int		i;
@@ -45,12 +45,12 @@ static void	ft_run_threads(t_data *data)
 			&data->philosophers[i]))
 			return ;
 	}
-	if (pthread_create(&data->check_all_alive, NULL,
-		&ft_alive_routine, data))
+	if (pthread_create(&data->check_all_alive, NULL, \
+		&ft_alive_monitor, data))
 		return ;
-	if (ft_num_meals(data) == 1
-		&& pthread_create(&data->check_all_full, NULL,
-		&ft_full_routine, data))
+	if (data->num_meals != -1
+		&& pthread_create(&data->check_all_full, NULL, \
+		&ft_full_monitor, data))
 		return ;
 	return ;
 }*/

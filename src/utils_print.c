@@ -1,10 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_print.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 10:40:56 by ksansom           #+#    #+#             */
+/*   Updated: 2024/02/23 15:49:04 by ksansom          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/philo.h"
 
-void ft_check_validity(t_data *data)
+void	ft_print_msg(t_data *data, int id, char *msg)
 {
-	int	d;
-	int	e;
-	int	s;
+	size_t	time;
+
+	time = ft_get_time() - get_start_time(data);
+	pthread_mutex_lock(&data->mut_print);
+	if (get_keep_loop(data))
+		printf("%llu %d %s\n", time, id, msg);
+	pthread_mutex_unlock(&data->mut_print);
+}
+
+void	ft_check_validity(t_data *data)
+{
+	size_t	d;
+	size_t	e;
+	size_t	s;
 
 	d = data->time_die;
 	e = data->time_eat;
@@ -12,12 +35,12 @@ void ft_check_validity(t_data *data)
 	if (data->num_philos % 2 == 0)
 	{
 		if (d < (e + s + 10))
-			printf("Warning: there is not enough time, a philosopher will die :(\n");
+			printf("Warning: not enough time, a philosopher will die :(\n");
 	}
 	else
 	{
 		if (d < ((e * 2) + s + 10))
-			printf("Warning: there is not enough time, a philosopher will die :(\n");
+			printf("Warning: not enough time, a philosopher will die :(\n");
 	}
 }
 

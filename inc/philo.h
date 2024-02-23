@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/16 13:49:27 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/23 15:50:41 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_philosopher
 	pthread_mutex_t	mut_state;
 	pthread_mutex_t	mut_meals_eaten;
 	pthread_mutex_t	mut_last_meal_time;
-	unsigned long	last_meal_time;				
+	size_t			last_meal_time;				
 }	t_philosopher;
 
 typedef struct s_data
@@ -55,10 +55,10 @@ typedef struct s_data
 	int				num_philos;
 	int				num_meals;
 	int				keep_loop;
-	unsigned long	time_start;
-	unsigned long	time_eat;
-	unsigned long	time_sleep;
-	unsigned long	time_die;
+	size_t			time_start;
+	size_t			time_eat;
+	size_t			time_sleep;
+	size_t			time_die;
 	pthread_mutex_t	mut_time_eat;
 	pthread_mutex_t	mut_time_sleep;
 	pthread_mutex_t	mut_time_die;
@@ -74,27 +74,41 @@ typedef struct s_data
 }	t_data;
 
 /*INITIALIZATION*/
-int				init_data(t_data *data, char **av);
-int				init_malloc_data(t_data *data);
-int				init_philosophers(t_data *data);
+int		init_data(t_data *data, char **av);
+int		init_malloc_data(t_data *data);
+int		init_philosophers(t_data *data);
 
 /*UTILS*/
-int				ft_atoi(char *str);
-int				ft_exit(t_data *data, char *str, int ret_code);
-int				ft_strlen(char *str);
-void			free_phil_data(t_data *data);
+int		ft_atoi(char *str);
+int		ft_exit(t_data *data, char *str, int ret_code);
+int		ft_strlen(char *str);
+void	free_phil_data(t_data *data);
 
 /*UTILS_TIME*/
-unsigned long	ft_get_time(void);
-void			ft_update_meal_time(t_philosopher *philo);
+size_t	ft_get_time(void);
+void	ft_update_meal_time(t_philosopher *philo);
 
 /*UTILS_GET*/
-int				get_num_philos(t_data *data);
+int		get_num_philos(t_data *data);
+int		get_keep_loop(t_data *data);
+
+/*UTILS_SET*/
+void	set_philo_state(t_philosopher *philo, t_state state);
+void	set_keep_loop(t_data *data, int set_to);
 
 /*EATING*/
 
+/*ROUTINES*/
+void	*routine(void *philo_ptr);
+int		ft_dead(t_philosopher *philo);
+
+/*MONITORS*/
+void	*ft_alive_monitor(void *data_ptr);
+void	*ft_full_monitor(void *data_ptr);
+
 /*UTILS_PRINT*/
-int				ft_print_usage(void);
-void			ft_check_validity(t_data *data);
+int		ft_print_usage(void);
+void	ft_check_validity(t_data *data);
+void	ft_print_msg(t_data *data, int id, char *msg);
 
 #endif
