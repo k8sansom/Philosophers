@@ -90,7 +90,10 @@ void	ft_update_meal_time(t_philosopher *philo);
 
 /*UTILS_GET*/
 int		get_num_philos(t_data *data);
+t_state	get_philo_state(t_philosopher *philo);
 int		get_keep_loop(t_data *data);
+size_t	get_last_meal(t_philosopher *philo);
+size_t	get_start_time(t_data *data);
 
 /*UTILS_SET*/
 void	set_philo_state(t_philosopher *philo, t_state state);

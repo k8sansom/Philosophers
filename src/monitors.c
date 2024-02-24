@@ -12,7 +12,7 @@
 
 #include "../inc/philo.h"
 
-void	*ft_full_monitor(void *data_ptr)
+/*void	*ft_full_monitor(void *data_ptr)
 {
 	int		i;
 	
@@ -43,4 +43,4 @@ void	*ft_alive_monitor(void *data_ptr)
 		usleep(1000);
 	}
 	return (NULL);
-}
+}*/

@@ -12,10 +12,10 @@
 
 #include "../inc/philo.h"
 
-size_t	get_die_time(t_data *data)
+/*size_t	get_die_time(t_data *data)
 {
 	
-}
+}*/
 
 size_t	get_last_meal(t_philosopher *philo)
 {

@@ -69,6 +69,7 @@ int	main(int ac, char **av)
 	init_philosophers(&data);
 	//ft_run_threads(&data);
 	//ft_join_threads(&data);
+	ft_print_msg(&data, 3, "is thinking");
 	free_phil_data(&data);
 	return (ft_exit(&data, "All done!\n", 0));
 }
