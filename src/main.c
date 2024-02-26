@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-/*
+
 static void	ft_join_threads(t_data *data)
 {
 	int	i;
@@ -53,7 +53,7 @@ static void	ft_run_threads(t_data *data)
 		&ft_full_monitor, data))
 		return ;
 	return ;
-}*/
+}
 
 int	main(int ac, char **av)
 {
@@ -67,8 +67,8 @@ int	main(int ac, char **av)
 	if (init_malloc_data(&data) != 0)
 		return (ft_exit(&data, "Malloc error", 2));
 	init_philosophers(&data);
-	//ft_run_threads(&data);
-	//ft_join_threads(&data);
+	ft_run_threads(&data);
+	ft_join_threads(&data);
 	ft_print_msg(&data, 3, "is thinking");
 	free_phil_data(&data);
 	return (ft_exit(&data, "All done!\n", 0));

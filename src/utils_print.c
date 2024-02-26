@@ -16,7 +16,7 @@ void	ft_print_msg(t_data *data, int id, char *msg)
 {
 	size_t	time;
 
-	time = ft_get_time() - get_start_time(data);
+	time = ft_get_time() - get_time_start(data);
 	pthread_mutex_lock(&data->mut_print);
 	if (get_keep_loop(data))
 		printf("%zu philosopher %d %s\n", time, id, msg);

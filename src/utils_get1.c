@@ -12,7 +12,7 @@
 
 #include "../inc/philo.h"
 
-size_t	get_start_time(t_data *data)
+size_t	get_time_start(t_data *data)
 {
 	size_t	time;
 
@@ -20,4 +20,14 @@ size_t	get_start_time(t_data *data)
 	time = data->time_start;
 	pthread_mutex_unlock(&data->mut_time_start);
 	return (time);
+}
+
+size_t	get_time_eat(t_data *data)
+{
+	size_t	time_eat;
+
+	pthread_mutex_unlock(&data->mut_time_eat);
+	time_eat = data->time_eat;
+	pthread_mutex_lock(&data->mut_time_eat);
+	return (time_eat);
 }

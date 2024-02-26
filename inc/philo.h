@@ -87,19 +87,23 @@ void	free_phil_data(t_data *data);
 /*UTILS_TIME*/
 size_t	ft_get_time(void);
 void	ft_update_meal_time(t_philosopher *philo);
+void	ft_usleep(size_t time_sleep);
 
 /*UTILS_GET*/
 int		get_num_philos(t_data *data);
 t_state	get_philo_state(t_philosopher *philo);
 int		get_keep_loop(t_data *data);
 size_t	get_last_meal(t_philosopher *philo);
-size_t	get_start_time(t_data *data);
+size_t	get_time_start(t_data *data);
+size_t	get_time_die(t_data *data);
+size_t	get_time_eat(t_data *data);
 
 /*UTILS_SET*/
 void	set_philo_state(t_philosopher *philo, t_state state);
 void	set_keep_loop(t_data *data, int set_to);
 
 /*EATING*/
+int		ft_eat(t_philosopher *philo);
 
 /*ROUTINES*/
 void	*routine(void *philo_ptr);
