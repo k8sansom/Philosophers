@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:02:31 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/23 15:14:28 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:30:13 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,10 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	memset(&data, 0, sizeof(t_data));
-	if (ac <= 4 || ac >= 7)
+	if (ft_input_check(ac, av) != 0)
 		return (ft_print_usage());
 	if (init_data(&data, av) != 0)
-		return (ft_print_usage());
-	if (init_malloc_data(&data) != 0)
-		return (ft_exit(&data, "Malloc error", 2));
+		return (2);
 	init_philosophers(&data);
 	ft_run_threads(&data);
 	ft_join_threads(&data);

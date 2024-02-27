@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/27 13:44:06 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:05:44 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,18 @@ typedef struct s_data
 }	t_data;
 
 /*INITIALIZATION*/
+int		ft_input_check(int ac, char **av);
 int		init_data(t_data *data, char **av);
 int		init_malloc_data(t_data *data);
-int		init_philosophers(t_data *data);
+void	init_philosophers(t_data *data);
+void	init_forks(t_data *data);
 
 /*UTILS*/
 int		ft_atoi(char *str);
 int		ft_exit(t_data *data, char *str, int ret_code);
 int		ft_strlen(char *str);
 void	free_phil_data(t_data *data);
+int		ft_isdigit(int ac, char **av);
 
 /*UTILS_TIME*/
 size_t	ft_get_time(void);

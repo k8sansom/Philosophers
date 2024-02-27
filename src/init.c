@@ -6,13 +6,35 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/27 13:39:29 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:30:05 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-static void	init_forks(t_data *data)
+int	ft_input_check(int ac, char **av)
+{
+	int		check;
+
+	check = 0;
+	if (ac < 5 || ac > 6)
+		return (1);
+	if (ft_isdigit(ac, av) != 0)
+		return (1);
+	if (av[5])
+	{
+		if (ft_atoi(av[5]) <= 0)
+			return (1);
+	}
+	check = ft_atoi(av[1]);
+	if (check < 1 || check > 200)
+		return (1);
+	if (ft_atoi(av[2]) < 60 || ft_atoi(av[3]) < 60 || ft_atoi(av[4]) < 60)
+		return (1);
+	return (0);
+}
+
+void	init_forks(t_data *data)
 {
 	t_philosopher	*philo;
 	int				i;
@@ -30,11 +52,11 @@ static void	init_forks(t_data *data)
 	while (++i < data->num_philos)
 	{
 		philo[i].left_fork = &data->forks[i];
-		philo[i].right_fork = &data->forks[i];
+		philo[i].right_fork = &data->forks[i - 1];
 	}
 }
 
-int	init_philosophers(t_data *data)
+void	init_philosophers(t_data *data)
 {
 	t_philosopher	*philo;
 	int				i;
@@ -51,12 +73,9 @@ int	init_philosophers(t_data *data)
 		pthread_mutex_init(&philo[i].mut_meals_eaten, NULL);
 		pthread_mutex_init(&philo[i].mut_last_meal_time, NULL);
 		ft_update_meal_time(&philo[i]);
-		if (philo->last_meal_time == 0)
-			return (3);
 		i++;
 	}
 	init_forks(data);
-	return (0);
 }
 
 int	init_malloc_data(t_data *data)
@@ -66,17 +85,10 @@ int	init_malloc_data(t_data *data)
 		return (2);
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philos);
 	if (data->forks == NULL)
-		return (2);
+		return (free(data->philosophers), 2);
 	data->philo_threads = malloc(sizeof(pthread_t) * data->num_philos);
 	if (data->philo_threads == NULL)
-		return (2);
-	pthread_mutex_init(&data->mut_time_eat, NULL);
-	pthread_mutex_init(&data->mut_time_sleep, NULL);
-	pthread_mutex_init(&data->mut_time_die, NULL);
-	pthread_mutex_init(&data->mut_print, NULL);
-	pthread_mutex_init(&data->mut_num_philos, NULL);
-	pthread_mutex_init(&data->mut_keep_loop, NULL);
-	pthread_mutex_init(&data->mut_time_start, NULL);
+		return (free(data->philosophers), free(data->forks), 2);
 	return (0);
 }
 
@@ -86,21 +98,17 @@ int	init_data(t_data *data, char **av)
 	data->time_die = (size_t)ft_atoi(av[2]);
 	data->time_eat = (size_t)ft_atoi(av[3]);
 	data->time_sleep = (size_t)ft_atoi(av[4]);
+	data->keep_loop = 1;
 	data->num_meals = -1;
 	if (av[5])
-	{
 		data->num_meals = ft_atoi(av[5]);
-		if (data->num_meals <= 0)
-		{
-			printf("number of meals should be 1+");
-			return (1);
-		}
-	}
-	if (data->num_philos < 1 || data->num_philos > 200)
-		return (1);
-	if (data->time_eat < 60 || data->time_die < 60 || data->time_sleep < 60)
-		return (1);
-	data->keep_loop = 1;
 	ft_check_validity(data);
-	return (0);
+	pthread_mutex_init(&data->mut_time_eat, NULL);
+	pthread_mutex_init(&data->mut_time_sleep, NULL);
+	pthread_mutex_init(&data->mut_time_die, NULL);
+	pthread_mutex_init(&data->mut_print, NULL);
+	pthread_mutex_init(&data->mut_num_philos, NULL);
+	pthread_mutex_init(&data->mut_keep_loop, NULL);
+	pthread_mutex_init(&data->mut_time_start, NULL);
+	return (init_malloc_data(data));
 }

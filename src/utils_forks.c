@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:28:02 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/27 13:44:40 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:10:14 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_take_left(t_philosopher *philo)
 	if (ft_dead(philo) || get_philo_state(philo) == DEAD)
 		return (1);
 	pthread_mutex_lock(philo->left_fork);
-	ft_print_msg(philo->data, philo->id, "picked up left fork");
+	ft_print_msg(philo->data, philo->id, "picked up a fork");
 	return (0);
 }
 
@@ -37,7 +37,7 @@ int	ft_take_right(t_philosopher *philo)
 	if (ft_dead(philo) || get_philo_state(philo) == DEAD)
 		return (1);
 	pthread_mutex_lock(philo->right_fork);
-	ft_print_msg(philo->data, philo->id, "picked up right fork");
+	ft_print_msg(philo->data, philo->id, "picked up a fork");
 	return (0);
 }
 
