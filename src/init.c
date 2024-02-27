@@ -99,7 +99,5 @@ int	init_data(t_data *data, char **av)
 		return (1);
 	data->keep_loop = 1;
 	ft_check_validity(data);
-	data->time_start = ft_get_time();
-	printf("start time: %zu\n", data->time_start);
 	return (0);
 }

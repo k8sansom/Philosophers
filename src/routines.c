@@ -12,17 +12,22 @@
 
 #include "../inc/philo.h"
 
-int		ft_dead(t_philosopher *philo)
+int	ft_think(t_philosopher *philo)
 {
-	t_data	*data;
-
-	data = philo->data;
-	if ((ft_get_time() - get_last_meal(philo)) > get_die_time(data) \
-		&& get_philo_state(philo) != EATING)
-	{
-		set_philo_state(philo, DEAD);
+	set_philo_state(philo, THINKING);
+	if (get_philo_state(philo) == DEAD)
 		return (1);
-	}
+	ft_print_msg(philo->data, philo->id, "is thinking");
+	return (0);
+}
+
+int	ft_sleep(t_philosopher *philo)
+{
+	set_philo_state(philo, SLEEPING);
+	if (get_philo_state(philo) == DEAD)
+		return (1);
+	ft_print_msg(philo->data, philo->id, "is sleeping");
+	ft_usleep(get_time_sleep(philo->data));
 	return (0);
 }
 

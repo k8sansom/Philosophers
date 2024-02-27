@@ -12,6 +12,26 @@
 
 #include "../inc/philo.h"
 
+size_t	get_time_sleep(t_data *data)
+{
+	size_t	time_sleep;
+
+	pthread_mutex_unlock(&data->mut_time_sleep);
+	time_sleep = data->time_sleep;
+	pthread_mutex_lock(&data->mut_time_sleep);
+	return (time_sleep);
+}
+
+int		get_meals_eaten(t_philosopher *philo)
+{
+	int		meals_eaten;
+
+	pthread_mutex_lock(&philo->mut_meals_eaten);
+	meals_eaten = philo->meals_eaten;
+	pthread_mutex_unlock(&philo->mut_meals_eaten);
+	return (meals_eaten);
+}
+
 size_t	get_time_start(t_data *data)
 {
 	size_t	time;
