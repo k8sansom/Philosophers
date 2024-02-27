@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:12:50 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/23 10:39:28 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:39:29 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ int	init_data(t_data *data, char **av)
 	{
 		data->num_meals = ft_atoi(av[5]);
 		if (data->num_meals <= 0)
+		{
+			printf("number of meals should be 1+");
 			return (1);
+		}
 	}
 	if (data->num_philos < 1 || data->num_philos > 200)
 		return (1);

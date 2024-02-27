@@ -6,7 +6,7 @@
 #    By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:54:49 by ksansom           #+#    #+#              #
-#    Updated: 2024/02/23 15:49:53 by ksansom          ###   ########.fr        #
+#    Updated: 2024/02/27 13:38:26 by ksansom          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS =	src/eating.c \
 		src/main.c \
 		src/monitors.c \
 		src/routines.c \
+		src/utils_forks.c \
 		src/utils_get.c \
 		src/utils_get1.c \
 		src/utils_print.c \

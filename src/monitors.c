@@ -6,13 +6,13 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:24:36 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/23 15:48:45 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:24:42 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int		ft_dead(t_philosopher *philo)
+int	ft_dead(t_philosopher *philo)
 {
 	t_data	*data;
 
