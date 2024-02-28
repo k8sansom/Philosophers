@@ -43,7 +43,7 @@ int	ft_take_right(t_philosopher *philo)
 
 int	ft_take_forks(t_philosopher *philo)
 {
-	if (get_num_philos(philo->data) == 1)
+	if (philo->data->num_philos == 1)
 		return (ft_one_philo(philo));
 	if (ft_take_right(philo))
 		return (1);

@@ -82,9 +82,8 @@ void	init_forks(t_data *data);
 
 /*UTILS*/
 int		ft_atoi(char *str);
-int		ft_exit(t_data *data, char *str, int ret_code);
 int		ft_strlen(char *str);
-void	free_phil_data(t_data *data);
+void	ft_free(t_data *data);
 int		ft_isdigit(int ac, char **av);
 
 /*UTILS_TIME*/
@@ -93,7 +92,6 @@ void	ft_update_meal_time(t_philosopher *philo);
 void	ft_usleep(size_t time_sleep);
 
 /*UTILS_GET*/
-int		get_num_philos(t_data *data);
 t_state	get_philo_state(t_philosopher *philo);
 int		get_keep_loop(t_data *data);
 size_t	get_last_meal(t_philosopher *philo);

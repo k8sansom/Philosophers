@@ -15,15 +15,13 @@
 static void	ft_join_threads(t_data *data)
 {
 	int	i;
-	int	num_philos;
 
-	num_philos = get_num_philos(data);
 	i = -1;
 	if (pthread_join(data->check_all_alive, NULL))
 		return ;
 	if (data->num_meals > 0 && pthread_join(data->check_all_full, NULL))
 		return ;
-	while (++i < num_philos)
+	while (++i < data->num_philos)
 	{
 		if (pthread_join(data->philo_threads[i], NULL))
 			return ;
@@ -34,12 +32,10 @@ static void	ft_join_threads(t_data *data)
 static void	ft_run_threads(t_data *data)
 {
 	int		i;
-	int		num_philos;
 
-	num_philos = get_num_philos(data);
 	data->time_start = ft_get_time();
 	i = -1;
-	while (++i < num_philos)
+	while (++i < data->num_philos)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL, &routine, \
 			&data->philosophers[i]))
@@ -67,6 +63,6 @@ int	main(int ac, char **av)
 	init_philosophers(&data);
 	ft_run_threads(&data);
 	ft_join_threads(&data);
-	free_phil_data(&data);
-	return (ft_exit(&data, "All done!\n", 0));
+	ft_free(&data);
+	return (0);
 }

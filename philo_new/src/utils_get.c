@@ -50,13 +50,3 @@ t_state	get_philo_state(t_philosopher *philo)
 	pthread_mutex_unlock(&philo->mut_state);
 	return (state);
 }
-
-int	get_num_philos(t_data *data)
-{
-	int	num_philos;
-
-	pthread_mutex_lock(&data->mut_num_philos);
-	num_philos = data->num_philos;
-	pthread_mutex_unlock(&data->mut_num_philos);
-	return (num_philos);
-}

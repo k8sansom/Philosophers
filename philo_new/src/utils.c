@@ -32,14 +32,12 @@ int	ft_isdigit(int ac, char **av)
 	return (0);
 }
 
-void	free_phil_data(t_data *data)
+void	ft_free(t_data *data)
 {
 	int	i;
-	int	num_philos;
 
-	num_philos = get_num_philos(data);
 	i = 0;
-	while (i < num_philos)
+	while (i < data->num_philos)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
 		pthread_mutex_destroy(&data->philosophers[i].mut_state);
@@ -67,22 +65,6 @@ int	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-int	ft_exit(t_data *data, char *str, int ret_code)
-{
-	if (ret_code == 2)
-	{
-		if (data->forks)
-			free(data->forks);
-		if (data->philo_threads)
-			free(data->philo_threads);
-		if (data->philosophers)
-			free(data->philosophers);
-	}
-	if (str)
-		write(1, str, ft_strlen(str));
-	return (ret_code);
 }
 
 int	ft_atoi(char *str)

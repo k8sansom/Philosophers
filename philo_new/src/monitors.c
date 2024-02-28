@@ -33,7 +33,7 @@ void	ft_notify_all(t_data *data)
 
 	philo = data->philosophers;
 	i = 0;
-	while (i < get_num_philos(data))
+	while (i < data->num_philos)
 	{
 		set_philo_state(&philo[i], DEAD);
 		i++;
@@ -47,7 +47,7 @@ void	*ft_full_monitor(void *data_ptr)
 
 	data = (t_data *)data_ptr;
 	i = -1;
-	while ((++i < get_num_philos(data)) && get_keep_loop(data))
+	while ((++i < data->num_philos) && get_keep_loop(data))
 	{
 		usleep(1000);
 		if (get_meals_eaten(&data->philosophers[i]) < data->num_meals)
@@ -64,15 +64,13 @@ void	*ft_full_monitor(void *data_ptr)
 void	*ft_alive_monitor(void *data_ptr)
 {
 	int				i;
-	int				num_philos;
 	t_data			*data;
 	t_philosopher	*philo;
 
 	data = (t_data *)data_ptr;
 	philo = data->philosophers;
-	num_philos = get_num_philos(data);
 	i = -1;
-	while (++i < num_philos && get_keep_loop(data))
+	while (++i < data->num_philos && get_keep_loop(data))
 	{
 		if (ft_dead(&philo[i]) && get_keep_loop(data))
 		{
@@ -81,7 +79,7 @@ void	*ft_alive_monitor(void *data_ptr)
 			ft_notify_all(data);
 			break ;
 		}
-		if (i == num_philos - 1)
+		if (i == data->num_philos - 1)
 			i = -1;
 		usleep(1000);
 	}
