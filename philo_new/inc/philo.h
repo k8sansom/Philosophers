@@ -63,7 +63,6 @@ typedef struct s_data
 	pthread_mutex_t	mut_time_sleep;
 	pthread_mutex_t	mut_time_die;
 	pthread_mutex_t	mut_print;
-	pthread_mutex_t	mut_num_philos;
 	pthread_mutex_t	mut_time_start;
 	pthread_mutex_t	mut_keep_loop;
 	pthread_t		check_all_alive;
