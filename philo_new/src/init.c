@@ -103,11 +103,7 @@ int	init_data(t_data *data, char **av)
 	if (av[5])
 		data->num_meals = ft_atoi(av[5]);
 	ft_check_validity(data);
-	pthread_mutex_init(&data->mut_time_eat, NULL);
-	pthread_mutex_init(&data->mut_time_sleep, NULL);
-	pthread_mutex_init(&data->mut_time_die, NULL);
 	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_keep_loop, NULL);
-	pthread_mutex_init(&data->mut_time_start, NULL);
 	return (init_malloc_data(data));
 }

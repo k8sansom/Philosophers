@@ -16,7 +16,7 @@ void	ft_print_msg(t_data *data, int id, char *msg)
 {
 	size_t	time;
 
-	time = ft_get_time() - get_time_start(data);
+	time = ft_get_time() - data->time_start;
 	pthread_mutex_lock(&data->mut_print);
 	if (get_keep_loop(data))
 		printf("%zu philosopher %d %s\n", time, id, msg);
@@ -32,7 +32,9 @@ void	ft_check_validity(t_data *data)
 	d = data->time_die;
 	e = data->time_eat;
 	s = data->time_sleep;
-	if (data->num_philos % 2 == 0)
+	if (data->num_philos == 1)
+		printf("A philosopher can't eat with only one fork :(\n");
+	else if (data->num_philos % 2 == 0)
 	{
 		if (d < (e + s + 10))
 			printf("Warning: not enough time, a philosopher will die :(\n");

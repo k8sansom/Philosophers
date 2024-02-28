@@ -12,13 +12,14 @@
 
 #include "../inc/philo.h"
 
-size_t	get_time_die(t_data *data)
+int		get_meals_eaten(t_philosopher *philo)
 {
-	size_t	time_die;
-	pthread_mutex_unlock(&data->mut_time_die);
-	time_die = data->time_die;
-	pthread_mutex_lock(&data->mut_time_die);
-	return (time_die);
+	int		meals_eaten;
+
+	pthread_mutex_lock(&philo->mut_meals_eaten);
+	meals_eaten = philo->meals_eaten;
+	pthread_mutex_unlock(&philo->mut_meals_eaten);
+	return (meals_eaten);
 }
 
 size_t	get_last_meal(t_philosopher *philo)

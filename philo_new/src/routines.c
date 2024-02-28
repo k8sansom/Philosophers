@@ -27,7 +27,7 @@ int	ft_sleep(t_philosopher *philo)
 	if (get_philo_state(philo) == DEAD)
 		return (1);
 	ft_print_msg(philo->data, philo->id, "is sleeping");
-	ft_usleep(get_time_sleep(philo->data));
+	ft_usleep(philo->data->time_sleep);
 	return (0);
 }
 

@@ -18,7 +18,7 @@ int	ft_one_philo(t_philosopher *philo)
 		return (1);
 	pthread_mutex_lock(philo->left_fork);
 	ft_print_msg(philo->data, philo->id, "picks up left fork");
-	ft_usleep(get_time_die(philo->data));
+	ft_usleep(philo->data->time_die);
 	set_philo_state(philo, DEAD);
 	return (1);
 }
@@ -37,7 +37,7 @@ int	ft_eat(t_philosopher *philo)
 	set_philo_state(philo, EATING);
 	ft_print_msg(philo->data, philo->id, "is eating");
 	ft_update_meal_time(philo);
-	ft_usleep(get_time_eat(philo->data));
+	ft_usleep(philo->data->time_eat);
 	ft_update_meals_eaten(philo);
 	ft_drop_forks(philo);
 	return (0);

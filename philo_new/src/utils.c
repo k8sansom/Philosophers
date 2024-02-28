@@ -45,13 +45,8 @@ void	ft_free(t_data *data)
 		pthread_mutex_destroy(&data->philosophers[i].mut_last_meal_time);
 		i++;
 	}
-	pthread_mutex_destroy(&data->mut_time_die);
-	pthread_mutex_destroy(&data->mut_time_eat);
-	pthread_mutex_destroy(&data->mut_time_sleep);
-	pthread_mutex_destroy(&data->mut_num_philos);
 	pthread_mutex_destroy(&data->mut_print);
 	pthread_mutex_destroy(&data->mut_keep_loop);
-	pthread_mutex_destroy(&data->mut_time_start);
 	free(data->philo_threads);
 	free(data->philosophers);
 	free(data->forks);

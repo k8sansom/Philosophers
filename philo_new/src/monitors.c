@@ -17,7 +17,7 @@ int	ft_dead(t_philosopher *philo)
 	t_data	*data;
 
 	data = philo->data;
-	if ((ft_get_time() - get_last_meal(philo)) > get_time_die(data) \
+	if ((ft_get_time() - get_last_meal(philo)) > data->time_die \
 		&& get_philo_state(philo) != EATING)
 	{
 		set_philo_state(philo, DEAD);
