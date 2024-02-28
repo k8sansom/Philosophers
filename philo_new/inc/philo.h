@@ -97,8 +97,10 @@ void	set_philo_state(t_philosopher *philo, t_state state);
 void	set_keep_loop(t_data *data, int set_to);
 
 /*EATING*/
+int		ft_take_forks(t_philosopher *philo);
 int		ft_eat(t_philosopher *philo);
 int		ft_one_philo(t_philosopher *philo);
+void	ft_update_meals_eaten(t_philosopher *philo);
 
 /*ROUTINES*/
 int		ft_think(t_philosopher *philo);
@@ -115,12 +117,5 @@ void	ft_notify_all(t_data *data);
 int		ft_print_usage(void);
 void	ft_check_validity(t_data *data);
 void	ft_print_msg(t_data *data, int id, char *msg);
-
-/*UTILS FORKS*/
-int		ft_take_forks(t_philosopher *philo);
-int		ft_take_right(t_philosopher *philo);
-int		ft_take_left(t_philosopher *philo);
-void	ft_drop_forks(t_philosopher *philo);
-void	ft_drop_right(t_philosopher *philo);
 
 #endif

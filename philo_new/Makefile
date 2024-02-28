@@ -22,9 +22,7 @@ SRCS =	src/eating.c \
 		src/main.c \
 		src/monitors.c \
 		src/routines.c \
-		src/utils_forks.c \
 		src/utils_get.c \
-		src/utils_get1.c \
 		src/utils_print.c \
 		src/utils_set.c \
 		src/utils_time.c \

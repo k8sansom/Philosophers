@@ -12,6 +12,24 @@
 
 #include "../inc/philo.h"
 
+int	ft_take_forks(t_philosopher *philo)
+{
+	if (philo->data->num_philos == 1)
+		return (ft_one_philo(philo));
+	if (ft_dead(philo) || get_philo_state(philo) == DEAD)
+		return (1);
+	pthread_mutex_lock(philo->right_fork);
+	ft_print_msg(philo->data, philo->id, "has taken a fork");
+	if (ft_dead(philo) || get_philo_state(philo) == DEAD)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		return (1);
+	}
+	pthread_mutex_lock(philo->left_fork);
+	ft_print_msg(philo->data, philo->id, "has taken a fork");
+	return (0);
+}
+
 int	ft_one_philo(t_philosopher *philo)
 {
 	if (ft_dead(philo) || get_philo_state(philo) == DEAD)
@@ -39,6 +57,7 @@ int	ft_eat(t_philosopher *philo)
 	ft_update_meal_time(philo);
 	ft_usleep(philo->data->time_eat);
 	ft_update_meals_eaten(philo);
-	ft_drop_forks(philo);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 	return (0);
 }
