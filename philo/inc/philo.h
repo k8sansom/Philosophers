@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:10 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/27 15:05:44 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:53:20 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <sys/stat.h>
-# include <semaphore.h>
 
 typedef enum e_state
 {
@@ -69,17 +68,17 @@ typedef struct s_data
 }	t_data;
 
 /*INITIALIZATION*/
+int		ft_input_check(int ac, char **av);
 int		init_data(t_data *data, char **av);
-void	init_stack_data(t_data *data);
+int		init_malloc_data(t_data *data);
 void	init_philosophers(t_data *data);
 void	init_forks(t_data *data);
 
 /*UTILS*/
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
-void	ft_mutex_destroy(t_data *data);
+void	ft_free(t_data *data);
 int		ft_isdigit(int ac, char **av);
-int		ft_input_check(int ac, char **av);
 
 /*UTILS_TIME*/
 size_t	ft_get_time(void);
