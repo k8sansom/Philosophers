@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:09:07 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/23 14:43:59 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/03/01 10:51:05 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ void	set_philo_state(t_philosopher *philo, t_state state)
 		philo->state = state;
 	pthread_mutex_unlock(&philo->mut_state);
 }
-

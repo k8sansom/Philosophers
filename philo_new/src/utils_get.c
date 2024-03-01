@@ -6,13 +6,13 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:00:06 by ksansom           #+#    #+#             */
-/*   Updated: 2024/02/23 14:01:53 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/03/01 10:50:34 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int		get_meals_eaten(t_philosopher *philo)
+int	get_meals_eaten(t_philosopher *philo)
 {
 	int		meals_eaten;
 
