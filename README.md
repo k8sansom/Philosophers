@@ -76,7 +76,6 @@ side. If there is only one philosopher, there should be only one fork on the tab
 with a mutex for each of them.
 
 Resources:
-https://www.youtube.com/watch?v=UGQsvVKwe90
 https://www.youtube.com/watch?v=d9s_d28yJq0
 
 even:
