@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:22:38 by ksansom           #+#    #+#             */
-/*   Updated: 2024/03/05 09:45:29 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/03/05 11:11:09 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,15 @@ int	ft_eat(t_philosopher *philo)
 	ft_update_meal_time(philo);
 	ft_usleep(philo->data->time_eat);
 	ft_update_meals_eaten(philo);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+	}
 	return (0);
 }
