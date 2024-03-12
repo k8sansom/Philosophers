@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 10:50:44 by ksansom           #+#    #+#             */
-/*   Updated: 2024/03/05 14:31:55 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/03/12 15:25:11 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*routine(void *philo_ptr)
 	philo = (t_philosopher *)philo_ptr;
 	ft_update_meal_time(philo);
 	// if (philo->id % 2 == 0)
-	// 	ft_usleep(10);
+	// 	ft_usleep(philo->data->time_eat);
 	while (get_philo_state(philo) != DEAD)
 	{
 		if (ft_eat(philo) != 0)

@@ -6,7 +6,7 @@
 /*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:22:38 by ksansom           #+#    #+#             */
-/*   Updated: 2024/03/05 14:29:59 by ksansom          ###   ########.fr       */
+/*   Updated: 2024/03/12 16:01:09 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@ int	ft_take_forks(t_philosopher *philo)
 {
 	if (philo->data->num_philos == 1)
 		return (ft_one_philo(philo));
-	else if (philo->id % 2 == 0 || philo->data->num_philos == 3)
-	 	return (ft_even_philo(philo));
-	else
+	if (philo->data->num_philos == 3)
 		return (ft_odd_philo(philo));
+	// if (philo->id == philo->data->num_philos)
+	// 	return (ft_even_philo(philo));
+	if (philo->id % 2 == 0 )
+		return (ft_even_philo(philo));
+	return (ft_odd_philo(philo));
 }
 
 int	ft_one_philo(t_philosopher *philo)
@@ -82,15 +85,20 @@ int	ft_eat(t_philosopher *philo)
 	ft_update_meal_time(philo);
 	ft_usleep(philo->data->time_eat);
 	ft_update_meals_eaten(philo);
-	if (philo->id % 2 == 0 || philo->data->num_philos == 3)
+	if (philo->id == philo->data->num_philos || philo->data->num_philos == 3)
 	{
 		pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(philo->right_fork);
 	}
-	else
+	else if (philo->id % 2 == 0)
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
 	}
 	return (0);
 }
